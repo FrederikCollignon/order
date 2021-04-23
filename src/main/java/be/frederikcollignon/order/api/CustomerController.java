@@ -18,7 +18,7 @@ public class CustomerController {
     }
 
     @PostMapping(consumes = "application/json")
-    public String createCustomer(@RequestBody CreateCustomerDTO createCustomerDTO) {
+    public CustomerDTO createCustomer(@RequestBody CreateCustomerDTO createCustomerDTO) {
         return customerService.createCustomer(createCustomerDTO);
 
 

@@ -23,13 +23,10 @@ public class CustomerService {
         this.customerMapper = customerMapper;
     }
 
-    public String createCustomer(CreateCustomerDTO createCustomerDTO) {
+    public CustomerDTO createCustomer(CreateCustomerDTO createCustomerDTO) {
         Customer customer = customerMapper.fromDto(createCustomerDTO);
         Customer createdCustomer = customerRepository.save(customer);
-        System.out.println(createdCustomer);
-        return "succes3";
+        return customerMapper.toDto(createdCustomer);
 
-
-//        return customerMapper.toDto(createdCustomer);
     }
 }
