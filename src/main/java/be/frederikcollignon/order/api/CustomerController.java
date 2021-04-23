@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/customers", produces = "application/json")
 public class CustomerController {
 
-    //    private CustomerService customerService;
-//
-//    @Autowired
-//    public CustomerController(CustomerService customerService) {
-//        this.customerService = customerService;
-//    }
-//
+    private CustomerService customerService;
+
+    @Autowired
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
     @PostMapping(consumes = "application/json")
     public String createCustomer(@RequestBody CreateCustomerDTO createCustomerDTO) {
-        //return customerService.createCustomer(createCustomerDTO);
-        System.out.println(createCustomerDTO);
-        return "succes";
+        return customerService.createCustomer(createCustomerDTO);
+
+
     }
 }
