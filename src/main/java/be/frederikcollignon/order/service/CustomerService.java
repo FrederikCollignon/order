@@ -14,21 +14,22 @@ import javax.transaction.Transactional;
 @Transactional
 public class CustomerService {
 
-//    private CustomerRepository customerRepository;
-//    private CustomerMapper customerMapper;
-//
-//    @Autowired
-//    public CustomerService(CustomerRepository customerRepository, CustomerMapper customerMapper) {
-//        this.customerRepository = customerRepository;
-//        this.customerMapper = customerMapper;
-//    }
+    private CustomerRepository customerRepository;
+    private CustomerMapper customerMapper;
+
+    @Autowired
+    public CustomerService(CustomerMapper customerMapper, CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+        this.customerMapper = customerMapper;
+    }
 
     public String createCustomer(CreateCustomerDTO createCustomerDTO) {
-        System.out.println(createCustomerDTO);
-        return "succes1";
+        Customer customer = customerMapper.fromDto(createCustomerDTO);
+        Customer createdCustomer = customerRepository.save(customer);
+        System.out.println(createdCustomer);
+        return "succes3";
 
-//        Customer customer = customerMapper.fromDto(createCustomerDTO);
-//        Customer createdCustomer = customerRepository.save(customer);
+
 //        return customerMapper.toDto(createdCustomer);
     }
 }
