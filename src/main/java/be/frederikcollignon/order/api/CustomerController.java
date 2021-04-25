@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -22,6 +23,11 @@ public class CustomerController {
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
+    }
+
+    @GetMapping(produces = "application/json")
+    public List<CustomerDTO> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 
     @PostMapping(consumes = "application/json")

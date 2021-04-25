@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -27,6 +29,11 @@ public class CustomerService {
         Customer customer = customerMapper.fromDto(createCustomerDTO);
         Customer createdCustomer = customerRepository.save(customer);
         return customerMapper.toDto(createdCustomer);
+    }
 
+    public List<CustomerDTO> getAllCustomers() {
+        return customerRepository.findAll().stream()
+                .map(customerMapper::toDto)
+                .collect(Collectors.toList());
     }
 }
