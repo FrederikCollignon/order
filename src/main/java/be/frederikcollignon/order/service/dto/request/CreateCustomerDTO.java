@@ -1,10 +1,7 @@
 package be.frederikcollignon.order.service.dto.request;
 
-import javax.validation.constraints.NotBlank;
-
 public class CreateCustomerDTO {
 
-    @NotBlank(message = "First name is mandatory")
     private String firstName;
     private String lastName;
     private String email;
@@ -29,16 +26,5 @@ public class CreateCustomerDTO {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "CreateCustomerDTO{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
     }
 }

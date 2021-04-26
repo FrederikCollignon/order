@@ -62,16 +62,4 @@ public class CustomerDTO {
         this.phoneNumber = phoneNumber;
         return this;
     }
-
-    @Override
-    public String toString() {
-        return "CustomerDTO{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 }

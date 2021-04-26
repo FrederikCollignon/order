@@ -1,7 +1,7 @@
 create table "order".customer
 (
     id           integer      not null
-        constraint customers_pk
+        constraint customer_pk
             primary key,
     first_name   varchar(255) not null,
     last_name    varchar(255) not null,
@@ -13,7 +13,7 @@ create table "order".customer
 alter table "order".customer
     owner to student;
 
-create unique index customers_id_index
+create unique index customer_id_index
     on "order".customer (id);
 
 -- auto-generated definition
