@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/items", produces = "application/json")
 public class ItemController {
 
-    private ItemService itemService;
+    private final ItemService itemService;
 
     @Autowired
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
 
-    @PostMapping(produces = "application/json")
+    @PostMapping(consumes = "application/json")
     public ItemDTO addItem(@RequestBody AddItemDTO addItemDTO) {
         return itemService.addItem(addItemDTO);
     }

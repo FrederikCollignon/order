@@ -16,7 +16,7 @@ public class OrderMapper {
 
     public OrderDTO toDto(Order order) {
         return new OrderDTO()
-                //.setId(order.getId())
+                .setId(order.getId())
                 .setName(order.getName());
     }
 
