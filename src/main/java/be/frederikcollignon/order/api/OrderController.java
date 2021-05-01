@@ -1,10 +1,10 @@
 package be.frederikcollignon.order.api;
 
 import be.frederikcollignon.order.service.OrderService;
+import be.frederikcollignon.order.service.dto.request.CreateOrderDTO;
+import be.frederikcollignon.order.service.dto.response.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/orders", produces = "application/json")
@@ -17,8 +17,9 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping(produces = "application/json")
-    public String returnString() {
-        return orderService.returnString();
+    @PostMapping(consumes = "application/json")
+    public OrderDTO createOrder(@RequestBody CreateOrderDTO createOrderDTO) {
+        return orderService.createOrder(createOrderDTO);
     }
+
 }
