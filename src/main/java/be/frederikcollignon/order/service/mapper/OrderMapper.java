@@ -10,7 +10,7 @@ public class OrderMapper {
 
     public Order fromDto(CreateOrderDTO createOrderDTO) {
         return new Order(
-                createOrderDTO.getTestName()
+                createOrderDTO.getName()
         );
     }
 

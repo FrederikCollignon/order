@@ -1,19 +1,19 @@
-create table "order".order
+create table "order".orders
 (
     id integer not null
-        constraint order_pk
+        constraint orders_pk
             primary key,
     name varchar(255) not null
 );
 
-alter table "order".order
+alter table "order".orders
     owner to student;
 
-create unique index order_id_index
-	on "order".order (id);
+create unique index orders_id_index
+	on "order".orders (id);
 
 
 -- auto-generated definition
-create sequence order_seq;
+create sequence orders_seq;
 
-alter sequence order_seq owner to student;
+alter sequence orders_seq owner to student;

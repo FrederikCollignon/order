@@ -2,16 +2,9 @@ package be.frederikcollignon.order.service.dto.request;
 
 public class CreateOrderDTO {
 
-    private String testName;
+    private String name;
 
-    public String getTestName() {
-        return testName;
-    }
-
-    @Override
-    public String toString() {
-        return "CreateOrderDTO{" +
-                "testName='" + testName + '\'' +
-                '}';
+    public String getName() {
+        return name;
     }
 }

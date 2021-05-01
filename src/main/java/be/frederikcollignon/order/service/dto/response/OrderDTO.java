@@ -22,12 +22,4 @@ public class OrderDTO {
         this.name = name;
         return this;
     }
-
-    @Override
-    public String toString() {
-        return "OrderDTO{" +
-                "id=" + //id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
