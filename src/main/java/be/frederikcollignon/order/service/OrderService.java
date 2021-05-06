@@ -2,8 +2,10 @@ package be.frederikcollignon.order.service;
 
 import be.frederikcollignon.order.domain.entity.ItemGroup;
 import be.frederikcollignon.order.domain.entity.Order;
+import be.frederikcollignon.order.domain.repository.ItemGroupRepository;
 import be.frederikcollignon.order.service.dto.request.CreateItemGroupDTO;
 import be.frederikcollignon.order.service.dto.request.CreateOrderDTO;
+import be.frederikcollignon.order.service.dto.response.ItemGroupDTO;
 import be.frederikcollignon.order.service.mapper.ItemGroupMapper;
 import be.frederikcollignon.order.service.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,23 +17,25 @@ import javax.transaction.Transactional;
 @Transactional
 public class OrderService {
 
+    private final ItemGroupRepository itemGroupRepository;
     private final ItemGroupMapper itemGroupMapper;
     private final OrderMapper orderMapper;
 
     @Autowired
-    public OrderService(ItemGroupMapper itemGroupMapper, OrderMapper orderMapper) {
+    public OrderService(ItemGroupMapper itemGroupMapper, OrderMapper orderMapper, ItemGroupRepository itemGroupRepository) {
         this.itemGroupMapper = itemGroupMapper;
         this.orderMapper = orderMapper;
+        this.itemGroupRepository = itemGroupRepository;
     }
 
     public String getString() {
         return "something";
     }
 
-    public String createItemGroup(CreateItemGroupDTO createItemGroupDTO) {
+    public ItemGroupDTO createItemGroup(CreateItemGroupDTO createItemGroupDTO) {
         ItemGroup itemGroup = itemGroupMapper.fromDto(createItemGroupDTO);
-        System.out.println(itemGroup);
-        return "createItemGroup works";
+        ItemGroup createdItemGroup = itemGroupRepository.save(itemGroup);
+        return itemGroupMapper.toDto(itemGroup);
     }
 
     public String createOrder(CreateOrderDTO createOrderDTO) {
@@ -40,9 +44,4 @@ public class OrderService {
         return "createOrder works";
     }
 
-//    public ItemDTO addItem(AddItemDTO addItemDTO) {
-//        Item item = itemMapper.fromDto(addItemDTO);
-//        Item addedItem = itemRepository.save(item);
-//        return itemMapper.toDto(addedItem);
-//    }
 }
