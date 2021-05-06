@@ -1,10 +1,9 @@
 package be.frederikcollignon.order.api;
 
 import be.frederikcollignon.order.service.OrderService;
+import be.frederikcollignon.order.service.dto.request.CreateItemGroupDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/orders", produces = "application/json")
@@ -20,5 +19,11 @@ public class OrderController {
     @GetMapping(produces = "application/json")
     public String getString() {
         return orderService.getString();
+    }
+
+    @PostMapping(consumes = "application/json")
+    public String createItemGroup(@RequestBody CreateItemGroupDTO createItemGroupDTO) {
+        System.out.println(createItemGroupDTO);
+        return "createItemGroup works";
     }
 }
