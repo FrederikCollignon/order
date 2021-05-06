@@ -1,10 +1,12 @@
 package be.frederikcollignon.order.service.dto.request;
 
+import java.util.List;
+
 public class CreateOrderDTO {
 
-    private String name;
+    private List<CreateItemGroupDTO> itemGroupDTOList;
 
-    public String getName() {
-        return name;
+    public List<CreateItemGroupDTO> getItemGroupDTOList() {
+        return itemGroupDTOList;
     }
 }

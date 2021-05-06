@@ -1,6 +1,7 @@
 package be.frederikcollignon.order.domain.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -12,21 +13,23 @@ public class Order {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "item_group")
+    @OneToMany
+    @JoinColumn(name = "fk_order_id")
+    private List<ItemGroup> itemGroupList;
 
     public Order() {
     }
 
-    public Order(String name) {
-        this.name = name;
+    public Order(List<ItemGroup> itemGroupList) {
+        this.itemGroupList = itemGroupList;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public List<ItemGroup> getItemGroupList() {
+        return itemGroupList;
     }
 }

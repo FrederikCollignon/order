@@ -13,7 +13,7 @@ public class ItemGroup {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne
     @JoinColumn(name = "item_id")
     private Item item;
 
