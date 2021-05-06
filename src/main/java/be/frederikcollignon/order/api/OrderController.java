@@ -2,6 +2,7 @@ package be.frederikcollignon.order.api;
 
 import be.frederikcollignon.order.service.OrderService;
 import be.frederikcollignon.order.service.dto.request.CreateItemGroupDTO;
+import be.frederikcollignon.order.service.dto.request.CreateOrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,8 @@ public class OrderController {
     }
 
     @PostMapping(consumes = "application/json")
-    public String createItemGroup(@RequestBody CreateItemGroupDTO createItemGroupDTO) {
-        System.out.println(createItemGroupDTO);
-        return "createItemGroup works";
+    public String createOrder(@RequestBody CreateOrderDTO createOrderDTO) {
+        System.out.println(createOrderDTO);
+        return "createOrder works";
     }
 }
