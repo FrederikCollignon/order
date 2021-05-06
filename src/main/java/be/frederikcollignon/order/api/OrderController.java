@@ -23,7 +23,7 @@ public class OrderController {
     }
 
     @PostMapping(consumes = "application/json")
-    public String createOrder(@RequestBody CreateItemGroupDTO createItemGroupDTO) {
-        return orderService.createItemGroup(createItemGroupDTO);
+    public String createOrder(@RequestBody CreateOrderDTO createOrderDTO) {
+        return orderService.createOrder(createOrderDTO);
     }
 }
